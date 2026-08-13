@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Euro Sphere French Language Academy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #1E3E62;
+            --primary-blue: #255A94;
+            --accent-gold: #F1B51C;
+            --text-main: #1E3E62;
+            --text-muted: #5A6E85;
+            --bg-light: #FFF8E7;
+            --bg-secondary: #FFF3D6;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 6px -1px rgba(30, 62, 98, 0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(30, 62, 98, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; min-height: 100vh; }
+
+        .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .top-bar div { display: flex; align-items: center; gap: 15px; }
+        .top-bar a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .top-bar i { color: var(--accent-gold); }
+
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--primary-dark); }
+        .logo img { height: 48px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; }
+        .nav-cta { background: var(--primary-dark); color: var(--white) !important; padding: 10px 22px; border-radius: 50px; border: 2px solid var(--accent-gold); }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--primary-dark); }
+
+        .page-header { background: linear-gradient(135deg, rgba(30, 62, 98, 0.95), rgba(11, 25, 44, 0.9)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600') center/cover; color: var(--white); padding: 80px 8%; text-align: center; }
+        .page-header h1 { font-size: 40px; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 14px; color: var(--accent-gold); font-weight: 600; }
+        .breadcrumb a { color: var(--white); text-decoration: none; }
+
+        .section { padding: 80px 8%; }
+        .contact-container { display: flex; flex-wrap: wrap; gap: 40px; }
+        .contact-info, .contact-form-wrapper { flex: 1; min-width: 320px; padding: 40px; border-radius: var(--radius-lg); }
+        .contact-info { background: var(--primary-dark); color: var(--white); display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-info h3 { font-size: 26px; font-weight: 700; margin-bottom: 15px; }
+        .info-list { display: flex; flex-direction: column; gap: 25px; margin-top: 20px; }
+        .info-item { display: flex; align-items: flex-start; gap: 18px; }
+        .info-icon { width: 44px; height: 44px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); font-size: 18px; flex-shrink: 0; }
+        .info-content h4 { font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 4px; }
+        .info-content p, .info-content a { color: var(--white); font-weight: 600; text-decoration: none; font-size: 15px; }
+
+        .contact-form-wrapper { background: var(--white); border: 1px solid rgba(30, 62, 98, 0.1); box-shadow: var(--shadow-sm); }
+        .contact-form-wrapper h3 { font-size: 24px; font-weight: 700; color: var(--primary-dark); margin-bottom: 20px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--primary-dark); margin-bottom: 6px; }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 14px; outline: none; background: var(--white); }
+        .form-control:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(30, 62, 98, 0.1); }
+        .submit-btn { width: 100%; padding: 14px; background: var(--primary-dark); color: var(--white); border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .submit-btn:hover { background: #162a45; }
+
+        /* Map styling */
+        .map-section { margin-top: 50px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+        footer { background: var(--primary-dark); color: rgba(255, 255, 255, 0.7); padding: 30px 8%; text-align: center; font-size: 14px; }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: var(--white); flex-direction: column; padding: 40px 20px; gap: 20px; transition: var(--transition); }
+            .nav-links.active { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> Red Square Market, Hisar, Haryana</div>
+        <div>
+            <a href="tel:08302727914"><i class="fa-solid fa-phone"></i> +91 83027 27914</a>
+            <a href="https://wa.me/918302727914" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Now</a>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Euro Sphere Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback" style="display:none; background:var(--primary-dark); color:var(--accent-gold); padding:8px 12px; border-radius:8px;">Euro Sphere</span>
+        </a>
+        <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Programs</a></li>
+            <li><a href="contact.html" style="color:var(--primary-blue);">Contact Us</a></li>
+            <li><a href="https://eurosphereindia.blogspot.com/" target="_blank">Blog</a></li>
+            <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Apply Now</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Contact Euro Sphere</h1>
+        <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+    </div>
+
+    <section class="section">
+        <div class="contact-container">
+            
+            <div class="contact-info">
+                <div>
+                    <h3>Get In Touch With Us</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Visit our Hisar institute or drop a message via WhatsApp to speak with our career counselors.</p>
+                    
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-content">
+                                <h4>Our Address</h4>
+                                <p>Euro Sphere French Language Academy,<br>Red Square Market, Hisar, Haryana</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="info-content">
+                                <h4>Phone / Call</h4>
+                                <p><a href="tel:08302727914">+91 83027 27914</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div class="info-content">
+                                <h4>Website</h4>
+                                <p><a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h3>Book A Free Demo Class</h3>
+                <form id="enquiryForm" onsubmit="sendToWhatsApp(event)">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Course Interest *</label>
+                        <select id="course" class="form-control" required>
+                            <option value="">Select Course</option>
+                            <option value="Beginner (A1/A2)">Beginner (A1/A2)</option>
+                            <option value="Intermediate (B1/B2)">Intermediate (B1/B2)</option>
+                            <option value="TEF/TCF Canada PR">TEF/TCF Canada PR</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="message" class="form-control" rows="3" placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.5681283623916!2d75.722513!3d29.148118!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3912332efbb1730d%3A0xc3cfc314ea3e5ec7!2sRed%20Square%20Market%2C%20Hisar%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Euro Sphere French Language Academy. All Rights Reserved. | <a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let course = document.getElementById('course').value;
+            let message = document.getElementById('message').value;
+
+            let whatsappNumber = "918302727914";
+            let text = `*Contact Enquiry - Euro Sphere*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Course:* ${course}%0A*Message:* ${message ? message : 'N/A'}`;
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>

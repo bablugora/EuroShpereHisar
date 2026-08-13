@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs | Euro Sphere French Language Academy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #1E3E62;
+            --primary-blue: #255A94;
+            --accent-gold: #F1B51C;
+            --text-main: #1E3E62;
+            --text-muted: #5A6E85;
+            --bg-light: #FFF8E7;
+            --bg-secondary: #FFF3D6;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 6px -1px rgba(30, 62, 98, 0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(30, 62, 98, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; min-height: 100vh; }
+
+        .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .top-bar div { display: flex; align-items: center; gap: 15px; }
+        .top-bar a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
+        .top-bar i { color: var(--accent-gold); }
+
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--primary-dark); }
+        .logo img { height: 48px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; }
+        .nav-cta { background: var(--primary-dark); color: var(--white) !important; padding: 10px 22px; border-radius: 50px; border: 2px solid var(--accent-gold); }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--primary-dark); }
+
+        .page-header { background: linear-gradient(135deg, rgba(30, 62, 98, 0.95), rgba(11, 25, 44, 0.9)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600') center/cover; color: var(--white); padding: 80px 8%; text-align: center; }
+        .page-header h1 { font-size: 40px; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 14px; color: var(--accent-gold); font-weight: 600; }
+        .breadcrumb a { color: var(--white); text-decoration: none; }
+
+        .section { padding: 80px 8%; }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .course-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid rgba(30, 62, 98, 0.08); transition: var(--transition); display: flex; flex-direction: column; }
+        .course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .course-badge { background: var(--accent-gold); color: var(--primary-dark); font-weight: 700; font-size: 12px; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 10px; }
+        .course-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .course-body h3 { font-size: 22px; color: var(--primary-dark); margin-bottom: 10px; }
+        .course-body p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; flex-grow: 1; }
+        .course-features { list-style: none; margin-bottom: 25px; }
+        .course-features li { font-size: 14px; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .course-features li i { color: #25D366; }
+        .enroll-btn { text-align: center; background: var(--primary-dark); color: var(--white); text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; transition: var(--transition); }
+        .enroll-btn:hover { background: var(--accent-gold); color: var(--primary-dark); }
+
+        footer { background: var(--primary-dark); color: rgba(255, 255, 255, 0.7); padding: 30px 8%; text-align: center; font-size: 14px; }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: var(--white); flex-direction: column; padding: 40px 20px; gap: 20px; transition: var(--transition); }
+            .nav-links.active { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> Red Square Market, Hisar, Haryana</div>
+        <div>
+            <a href="tel:08302727914"><i class="fa-solid fa-phone"></i> +91 83027 27914</a>
+            <a href="https://wa.me/918302727914" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Now</a>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Euro Sphere Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback" style="display:none; background:var(--primary-dark); color:var(--accent-gold); padding:8px 12px; border-radius:8px;">Euro Sphere</span>
+        </a>
+        <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html" style="color:var(--primary-blue);">Programs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="https://eurosphereindia.blogspot.com/" target="_blank">Blog</a></li>
+            <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Apply Now</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>French Programs & Certification</h1>
+        <div class="breadcrumb"><a href="index.html">Home</a> / Programs</div>
+    </div>
+
+    <section class="section">
+        <div class="courses-grid">
+            
+            <div class="course-card">
+                <div class="course-body">
+                    <span class="course-badge">Beginner Level</span>
+                    <h3>DELF A1 / A2 Foundation</h3>
+                    <p>Designed for absolute beginners. Covers basic grammar, daily conversation vocabulary, and elemental sentence building.</p>
+                    <ul class="course-features">
+                        <li><i class="fa-solid fa-check"></i> Basic Pronunciation & Accent</li>
+                        <li><i class="fa-solid fa-check"></i> Daily Life Conversations</li>
+                        <li><i class="fa-solid fa-check"></i> Mock Test Series Included</li>
+                    </ul>
+                    <a href="contact.html" class="enroll-btn">Enroll / Request Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-body">
+                    <span class="course-badge">High Demand</span>
+                    <h3>TEF / TCF Canada Crash Course</h3>
+                    <p>Specialized program designed to boost your CRS score by up to 50+ points for Express Entry and Canada PR.</p>
+                    <ul class="course-features">
+                        <li><i class="fa-solid fa-check"></i> Focus on Listening & Speaking</li>
+                        <li><i class="fa-solid fa-check"></i> Real Exam Pattern Practice</li>
+                        <li><i class="fa-solid fa-check"></i> NCLC Level 7+ Targeted Strategy</li>
+                    </ul>
+                    <a href="contact.html" class="enroll-btn">Enroll / Request Syllabus</a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-body">
+                    <span class="course-badge">Intermediate</span>
+                    <h3>DELF B1 / B2 Professional</h3>
+                    <p>Advanced grammar, debate, essay writing, and professional communication needed for France study visas and corporate jobs.</p>
+                    <ul class="course-features">
+                        <li><i class="fa-solid fa-check"></i> Corporate Communication</li>
+                        <li><i class="fa-solid fa-check"></i> University Visa Level Prep</li>
+                        <li><i class="fa-solid fa-check"></i> One-on-One Speaking Practice</li>
+                    </ul>
+                    <a href="contact.html" class="enroll-btn">Enroll / Request Syllabus</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Euro Sphere French Language Academy. All Rights Reserved. | <a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+</body>
+</html>

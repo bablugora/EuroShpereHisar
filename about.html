@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Euro Sphere French Language Academy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-dark: #1E3E62;
+            --primary-blue: #255A94;
+            --accent-gold: #F1B51C;
+            --accent-gold-hover: #D89F10;
+            --accent-red: #E52E2E;
+            --text-main: #1E3E62;
+            --text-muted: #5A6E85;
+            --bg-light: #FFF8E7;
+            --bg-secondary: #FFF3D6;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 6px -1px rgba(30, 62, 98, 0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(30, 62, 98, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; min-height: 100vh; }
+
+        /* Top Bar & Nav Header */
+        .top-bar { background-color: var(--primary-dark); color: rgba(255, 255, 255, 0.85); padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .top-bar div { display: flex; align-items: center; gap: 15px; }
+        .top-bar a { color: rgba(255, 255, 255, 0.9); text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+        .top-bar a:hover { color: var(--accent-gold); }
+        .top-bar i { color: var(--accent-gold); }
+
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--primary-dark); }
+        .logo img { height: 48px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: var(--transition); position: relative; }
+        .nav-links a:not(.nav-cta):hover { color: var(--primary-blue); }
+        .nav-cta { background: var(--primary-dark); color: var(--white) !important; padding: 10px 22px; border-radius: 50px; border: 2px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(241, 181, 28, 0.2); }
+        .nav-cta:hover { background: var(--accent-gold); color: var(--primary-dark) !important; }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: var(--primary-dark); }
+
+        /* Page Banner Header */
+        .page-header { background: linear-gradient(135deg, rgba(30, 62, 98, 0.95), rgba(11, 25, 44, 0.9)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600') center/cover; color: var(--white); padding: 80px 8%; text-align: center; }
+        .page-header h1 { font-size: 40px; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 14px; color: var(--accent-gold); font-weight: 600; }
+        .breadcrumb a { color: var(--white); text-decoration: none; }
+
+        /* Section Layout */
+        .section { padding: 80px 8%; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text h2 { font-size: 32px; font-weight: 800; color: var(--primary-dark); margin-bottom: 20px; }
+        .about-text p { color: var(--text-muted); font-size: 16px; margin-bottom: 20px; text-align: justify; }
+        .feature-box { background: var(--white); padding: 25px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-gold); box-shadow: var(--shadow-sm); margin-bottom: 15px; }
+        .feature-box h4 { font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
+
+        /* Vision & Mission Cards */
+        .vision-mission-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .vm-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px 30px; box-shadow: var(--shadow-sm); border: 1px solid rgba(30, 62, 98, 0.08); text-align: center; transition: var(--transition); }
+        .vm-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .vm-icon { width: 70px; height: 70px; background: rgba(30, 62, 98, 0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: var(--primary-dark); margin: 0 auto 20px; }
+
+        footer { background: var(--primary-dark); color: rgba(255, 255, 255, 0.7); padding: 30px 8%; text-align: center; font-size: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: var(--white); flex-direction: column; padding: 40px 20px; gap: 20px; transition: var(--transition); box-shadow: var(--shadow-lg); }
+            .nav-links.active { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> Red Square Market, Hisar, Haryana</div>
+        <div>
+            <a href="tel:08302727914"><i class="fa-solid fa-phone"></i> +91 83027 27914</a>
+            <a href="https://wa.me/918302727914" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat Now</a>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Euro Sphere Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span class="logo-fallback" style="display:none; background:var(--primary-dark); color:var(--accent-gold); padding:8px 12px; border-radius:8px;">Euro Sphere</span>
+        </a>
+        <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" style="color:var(--primary-blue);">About Us</a></li>
+            <li><a href="courses.html">Programs</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="https://eurosphereindia.blogspot.com/" target="_blank">Blog</a></li>
+            <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Apply Now</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>About Euro Sphere</h1>
+        <div class="breadcrumb"><a href="index.html">Home</a> / About Us</div>
+    </div>
+
+    <section class="section">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Empowering Careers Through French Proficiency</h2>
+                <p>Welcome to <strong>Euro Sphere French Language Academy</strong>, Hisar’s premier institute dedicated to providing top-quality French language training. Whether your goal is higher education in France, migrating to Canada via Express Entry, or expanding career avenues in top MNCs, we provide customized learning modules.</p>
+                
+                <div class="feature-box">
+                    <h4><i class="fa-solid fa-certificate" style="color:var(--accent-gold);"></i> Certified Instructors</h4>
+                    <p style="margin:0; font-size:14px;">Learn from certified language experts specializing in DELF, DALF, TEF, and TCF Canada formats.</p>
+                </div>
+                <div class="feature-box">
+                    <h4><i class="fa-solid fa-bullseye" style="color:var(--accent-gold);"></i> High Success Rate</h4>
+                    <p style="margin:0; font-size:14px;">Over 98% of our students achieve their target CLB/NCLC score levels for Canada PR and university visas.</p>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="Students Learning" style="width:100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+            </div>
+        </div>
+
+        <div class="vision-mission-container">
+            <div class="vm-card">
+                <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+                <h3 style="margin-bottom: 10px; color: var(--primary-dark);">Our Vision</h3>
+                <p style="color: var(--text-muted); font-size:14px;">To become North India's most trusted foreign language ecosystem, bridging global communication gaps and facilitating international study and employment.</p>
+            </div>
+            <div class="vm-card">
+                <div class="vm-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3 style="margin-bottom: 10px; color: var(--primary-dark);">Our Mission</h3>
+                <p style="color: var(--text-muted); font-size:14px;">To deliver high-impact, interactive, and result-oriented French language training that guarantees proficiency in reading, writing, listening, and speaking.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Euro Sphere French Language Academy. All Rights Reserved. | <a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+</body>
+</html>

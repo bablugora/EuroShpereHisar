@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en-FR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,23 +20,20 @@
 
     <style>
         :root {
-            /* Primary Colors (Dark Blue & Gold from logo and text) */
-            --primary-dark: #1E3E62;        /* Dark Blue (Euro, Text, Icons) */
-            --primary-blue: #255A94;        /* Medium Blue Accent */
-            --accent-gold: #F1B51C;         /* Yellow / Gold (Sphere) */
-            --accent-gold-hover: #D89F10;   /* Gold Hover State */
-            --accent-red: #E52E2E;          /* Bright Red (French & German text) */
+            --primary-dark: #1E3E62;        /* Dark Blue */
+            --primary-blue: #255A94;        /* Medium Blue */
+            --accent-gold: #F1B51C;         /* Yellow / Gold */
+            --accent-gold-hover: #D89F10;   
+            --accent-red: #0055A5;          /* French Tricolor Blue */
+            --french-red: #EF4135;          /* French Tricolor Red */
             
-            /* Text Colors */
-            --text-main: #1E3E62;           /* Dark Navy Blue for text */
-            --text-muted: #5A6E85;          /* Muted Blue-Grey */
+            --text-main: #1E3E62;           
+            --text-muted: #5A6E85;          
             
-            /* Background Colors */
-            --bg-light: #FFF8E7;           /* Exact Cream Background from Image */
-            --bg-secondary: #FFF3D6;       /* Slightly deeper cream for alternate sections */
-            --white: #FFFFFF;              /* Card & Container Backgrounds */
+            --bg-light: #FFF8E7;           
+            --bg-secondary: #FFF3D6;       
+            --white: #FFFFFF;              
             
-            /* UI Structure */
             --shadow-sm: 0 4px 6px -1px rgba(30, 62, 98, 0.05);
             --shadow-lg: 0 10px 25px -5px rgba(30, 62, 98, 0.1);
             --radius-md: 12px;
@@ -60,7 +57,7 @@
             min-height: 100vh;
         }
 
-        /* --- Top Bar --- */
+        /* Top Bar */
         .top-bar {
             background-color: var(--primary-dark);
             color: rgba(255, 255, 255, 0.85);
@@ -69,7 +66,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid var(--french-red); /* French Red Accent Line */
         }
 
         .top-bar div {
@@ -95,7 +92,7 @@
             color: var(--accent-gold);
         }
 
-        /* --- Navbar --- */
+        /* Navbar */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -190,7 +187,7 @@
             color: var(--primary-dark);
         }
 
-        /* --- Hero Section --- */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(30, 62, 98, 0.92), rgba(11, 25, 44, 0.88)), 
                         url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600') center/cover no-repeat;
@@ -198,6 +195,16 @@
             padding: 120px 8% 100px;
             text-align: center;
             position: relative;
+        }
+
+        .french-tag {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFD700;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
         }
 
         .hero-badge {
@@ -286,7 +293,7 @@
             transform: translateY(-3px);
         }
 
-        /* --- Stats Bar --- */
+        /* Stats Bar */
         .stats-bar {
             background: var(--white);
             margin: -40px 8% 0;
@@ -314,7 +321,50 @@
             font-weight: 500;
         }
 
-        /* --- Common Section Styles --- */
+        /* French Special Banner Section */
+        .french-vibe-banner {
+            background: #ffffff;
+            margin: 60px 8% 0;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border-left: 6px solid var(--french-red);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .vibe-content h3 {
+            font-size: 24px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .vibe-content p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+        .vibe-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: var(--bg-light);
+            border: 1px solid #E2E8F0;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* Common Section Styles */
         .section {
             padding: 90px 8%;
         }
@@ -342,7 +392,7 @@
             line-height: 1.25;
         }
 
-        /* --- Courses Section --- */
+        /* Courses Section */
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -427,7 +477,7 @@
             gap: 10px;
         }
 
-        /* --- FAQ Accordion --- */
+        /* FAQ Accordion */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -469,7 +519,7 @@
             color: var(--accent-gold);
         }
 
-        /* --- Contact Section --- */
+        /* Contact Section */
         .contact-section {
             background: var(--white);
         }
@@ -611,7 +661,7 @@
             box-shadow: 0 5px 15px rgba(30, 62, 98, 0.2);
         }
 
-        /* --- Floating WhatsApp Button --- */
+        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -636,7 +686,7 @@
             color: #FFF;
         }
 
-        /* --- Footer --- */
+        /* Footer */
         footer {
             background: var(--primary-dark);
             color: rgba(255, 255, 255, 0.7);
@@ -651,7 +701,7 @@
             text-decoration: none;
         }
 
-        /* --- Responsive Styles --- */
+        /* Responsive Styles */
         @media (max-width: 992px) {
             .hero h1 { font-size: 38px; }
             .section { padding: 70px 5%; }
@@ -681,6 +731,7 @@
             .hero p { font-size: 16px; }
             .stats-bar { margin: -30px 5% 0; grid-template-columns: repeat(2, 1fr); }
             .contact-info, .contact-form-wrapper { padding: 25px; }
+            .french-vibe-banner { margin: 40px 5% 0; flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -705,16 +756,17 @@
             <i class="fa-solid fa-bars"></i>
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#courses">Programs</a></li>
+            <li><a href="#home">Accueil (Home)</a></li>
+            <li><a href="#courses">Cours (Programs)</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="https://eurosphereindia.blogspot.com/" target="_blank">Blog</a></li>
             <li><a href="#contact" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Apply Now</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
+        <span class="french-tag">🇫🇷 Apprenez Le Français Avec Nous</span>
         <div class="hero-badge">
             <i class="fa-solid fa-star"></i> #1 French Language Academy in Hisar
         </div>
@@ -745,9 +797,21 @@
         </div>
     </div>
 
+    <div class="french-vibe-banner">
+        <div class="vibe-content">
+            <h3>Parlez-vous français ? (Do you speak French?)</h3>
+            <p>Learn authentic French pronunciation and vocabulary designed for real-world confidence.</p>
+        </div>
+        <div class="vibe-pills">
+            <span class="pill">🇫🇷 DELF A1 - B2</span>
+            <span class="pill">🇨🇦 TEF / TCF Canada</span>
+            <span class="pill">🗣️ Spoken Fluency</span>
+        </div>
+    </div>
+
     <section class="section" id="courses">
         <div class="section-header">
-            <span class="section-subtitle">Tailored Learning Paths</span>
+            <span class="section-subtitle">Nos Programmes de Formation</span>
             <h2 class="section-title">Our Premier Programs</h2>
         </div>
         <div class="cards-container">
@@ -791,7 +855,7 @@
 
     <section class="section" id="faq" style="background-color: var(--bg-secondary);">
         <div class="section-header">
-            <span class="section-subtitle">Got Questions?</span>
+            <span class="section-subtitle">Questions Fréquentes</span>
             <h2 class="section-title">Frequently Asked Questions</h2>
         </div>
         <div class="faq-container">
@@ -906,7 +970,7 @@
     </a>
 
     <footer>
-        <p>&copy; 2026 Euro Sphere French Language Academy. All Rights Reserved. | <a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
+        <p>&copy; 2026 Euro Sphere French Language Academy. Tous droits réservés. | <a href="https://www.foreignlanguagehub.com" target="_blank">www.foreignlanguagehub.com</a></p>
     </footer>
 
     <script>
