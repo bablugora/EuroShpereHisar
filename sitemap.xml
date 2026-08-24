@@ -5,15 +5,19 @@
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.foreignlanguagehub.com/courses.html</loc>
+    <loc>https://www.foreignlanguagehub.com/about</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.foreignlanguagehub.com/contact.html</loc>
+    <loc>https://www.foreignlanguagehub.com/courses</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.foreignlanguagehub.com/extra.html</loc>
+    <loc>https://www.foreignlanguagehub.com/contact</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.foreignlanguagehub.com/extra</loc>
     <priority>0.50</priority>
   </url>
 </urlset>
