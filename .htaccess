@@ -1,15 +1,16 @@
 RewriteEngine On
 
-# 1. Force HTTPS and Non-WWW (Recommended for Clean SEO)
-# Agar aapka domain WWW ke bina hai:
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# 1. Force HTTPS and WWW (Sitemap & Search Console se match karne ke liye)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.*)$ [NC]
+RewriteRule ^ https://www.foreignlanguagehub.com%{REQUEST_URI} [L,R=301]
 
 # 2. index.html ko direct root domain (/) par redirect karein
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ [NC]
-RewriteRule ^index\.html$ https://foreignlanguagehub.com/ [R=301,L]
+RewriteRule ^index\.html$ https://www.foreignlanguagehub.com/ [R=301,L]
 
-# 3. Direct .html URL ko clean URL (without .html) par 301 redirect karein
+# 3. Direct .html URL ko clean URL (without .html) par redirect karein
 RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
