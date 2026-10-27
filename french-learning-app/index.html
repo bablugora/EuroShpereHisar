@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b70">
+  <meta name="description" content="Learn French with Euro Sphere French Language Academy: lessons, vocabulary, pronunciation and quizzes from A1 to C1.">
+  <title>Euro Sphere | French Learning Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <main class="app-container">
+    <section id="auth-screen" class="screen active">
+      <div class="auth-brand"><div class="logo-circle"><i class="fa-solid fa-graduation-cap"></i></div><p class="eyebrow">EURO SPHERE</p><h1>French Language Academy</h1><p class="muted">Your French learning journey, from A1 to C1.</p></div>
+      <div class="card auth-card">
+        <div class="auth-tabs"><button id="tab-signup" class="auth-tab active" type="button" onclick="switchAuthTab('signup')">Create Account</button><button id="tab-login" class="auth-tab" type="button" onclick="switchAuthTab('login')">Log In</button></div>
+        <form id="signup-form" class="auth-form">
+          <label for="signup-name">Name</label><input type="text" id="signup-name" placeholder="Your name" autocomplete="name" required maxlength="60">
+          <label for="signup-email">Email</label><input type="email" id="signup-email" placeholder="vous@exemple.com" autocomplete="email" required>
+          <label for="signup-password">Password (at least 8 characters)</label><input type="password" id="signup-password" placeholder="Create a password" autocomplete="new-password" minlength="8" required>
+          <button type="submit" class="primary-btn">Start Learning <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <form id="login-form" class="auth-form" hidden>
+          <label for="login-email">Email</label><input type="email" id="login-email" placeholder="vous@exemple.com" autocomplete="email" required>
+          <label for="login-password">Mot de passe</label><input type="password" id="login-password" placeholder="Your password" autocomplete="current-password" required>
+          <button type="submit" class="primary-btn">Log In</button>
+        </form>
+        <p class="auth-note">Local demo: accounts are stored in this browser. For real student use, connect secure server-side authentication.</p>
+        <p id="auth-message" class="message" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="dashboard-screen" class="screen" aria-label="Dashboard">
+      <header class="app-header"><div><p class="eyebrow">HELLO 👋</p><h2 id="user-display">Student</h2><p class="muted small">Ready to practice your French?</p></div><button id="logout-btn" class="logout-btn" type="button" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></header>
+      <div class="hero-banner"><div><p class="eyebrow light">YOUR LEARNING SPACE</p><h2>A little French<br>every day.</h2><p>Learn at your own pace and grow in confidence.</p></div><div class="hero-icon">🇫🇷</div></div>
+      <div class="level-heading"><div><h3>Choose your level</h3><p class="muted small">Common European Framework of Reference</p></div></div>
+      <div class="level-buttons" role="group" aria-label="French level"><button class="level-btn active-level" data-level="A1" type="button" onclick="selectLevel('A1')">A1</button><button class="level-btn" data-level="A2" type="button" onclick="selectLevel('A2')">A2</button><button class="level-btn" data-level="B1" type="button" onclick="selectLevel('B1')">B1</button><button class="level-btn" data-level="B2" type="button" onclick="selectLevel('B2')">B2</button><button class="level-btn" data-level="C1" type="button" onclick="selectLevel('C1')">C1</button></div>
+      <div class="progress-section"><div class="progress-top"><div><p class="muted small">YOUR PROGRESS</p><h3 id="progress-score">0 points</h3></div><div class="progress-icon"><i class="fa-solid fa-chart-line"></i></div></div><div class="progress-track"><div id="progress-bar" class="progress-fill" style="width:0%"></div></div><p id="progress-caption" class="muted small">Take a quiz to start tracking your progress.</p></div>
+      <h3 id="current-level-title" class="section-title">A1 Course</h3>
+      <div class="feature-grid">
+        <button class="feature-card" type="button" onclick="openSection('chapters')"><span class="feature-icon purple"><i class="fa-solid fa-book-open"></i></span><strong>Lessons</strong><small>Grammar & vocabulary</small></button>
+        <button class="feature-card" type="button" onclick="openSection('test')"><span class="feature-icon blue"><i class="fa-solid fa-circle-question"></i></span><strong>Interactive Quiz</strong><small>Test your knowledge</small></button>
+        <button class="feature-card" type="button" onclick="openSection('audio')"><span class="feature-icon green"><i class="fa-solid fa-volume-high"></i></span><strong>Pronunciation</strong><small>Listen and repeat</small></button>
+        <button class="feature-card" type="button" onclick="openSection('vocabulary')"><span class="feature-icon orange"><i class="fa-solid fa-language"></i></span><strong>Vocabulary</strong><small>Essential words</small></button>
+        <button class="feature-card" type="button" onclick="openSection('video')"><span class="feature-icon red"><i class="fa-solid fa-play"></i></span><strong>Videos</strong><small>External resources</small></button>
+        <button class="feature-card" type="button" onclick="openCertificate()"><span class="feature-icon gold"><i class="fa-solid fa-award"></i></span><strong>Certificate</strong><small>Print your result</small></button>
+      </div>
+      <div class="leaderboard-card"><div><span class="leader-icon"><i class="fa-solid fa-trophy"></i></span><div><strong>Top score on this device</strong><p id="top-scorer-name" class="muted small">No scores yet</p></div></div><strong id="top-scorer-score">0 pts</strong></div>
+    </section>
+
+    <section id="content-screen" class="screen"><header class="app-header content-header"><button class="back-btn" type="button" onclick="showScreen('dashboard-screen')"><i class="fa-solid fa-arrow-left"></i> Back</button><h2 id="content-title">Lessons</h2><span class="level-chip" id="content-level-chip">A1</span></header><div id="dynamic-content-body" class="content-body"></div></section>
+
+    <section id="quiz-screen" class="screen"><header class="app-header content-header"><button class="back-btn" type="button" onclick="showScreen('dashboard-screen')"><i class="fa-solid fa-arrow-left"></i> Back</button><h2>French Quiz</h2><span id="quiz-level-chip" class="level-chip">A1</span></header><div class="quiz-progress"><div class="progress-track"><div id="quiz-progress-fill" class="progress-fill" style="width:0%"></div></div><p id="quiz-counter" class="muted small">Question 1</p></div><div class="quiz-card"><p class="eyebrow">YOUR TURN</p><h3 id="quiz-question">Question</h3><div id="quiz-options" class="options"></div><p id="quiz-result" class="quiz-feedback" role="status" aria-live="polite"></p><button id="next-btn" class="primary-btn" type="button" hidden>Next Question <i class="fa-solid fa-arrow-right"></i></button></div></section>
+
+    <section id="certificate-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cert-title"><div class="modal-content"><button class="close-btn" type="button" onclick="closeCertificate()" aria-label="Close">&times;</button><div id="certificate-print-area" class="certificate-box"><p class="eyebrow">EURO SPHERE</p><h2 id="cert-title">Progress Certificate</h2><p>This certificate is presented to</p><h1 id="cert-student-name">Student</h1><p>for practicing French at level</p><h2 id="cert-course-level">A1</h2><p id="cert-score">Score: 0 points</p><p id="cert-date-str"></p><div class="cert-signature">Euro Sphere French Language Academy</div><p class="muted tiny">Local progress certificate — not an official CEFR qualification.</p></div><button class="primary-btn" type="button" onclick="downloadPDF()"><i class="fa-solid fa-print"></i> Print / Save as PDF</button></div></section>
+  </main>
+  <nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" type="button" onclick="showScreen('dashboard-screen')"><i class="fa-solid fa-house"></i><span>Home</span></button><button class="nav-item" type="button" onclick="openSection('chapters')"><i class="fa-solid fa-book"></i><span>Lessons</span></button><button class="nav-item" type="button" onclick="openProfile()"><i class="fa-solid fa-user"></i><span>Profile</span></button><button class="nav-item" type="button" onclick="openCertificate()"><i class="fa-solid fa-award"></i><span>Certificate</span></button></nav>
+  <script src="storage.js"></script><script src="auth.js"></script><script src="script.js"></script>
+</body>
+</html>
