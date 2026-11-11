@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102b57">
+  <title>Euro Sphere | French Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <main id="auth-screen" class="auth-screen">
+    <section class="auth-art">
+      <div class="brand brand-light"><span class="brand-mark">E</span><span><b>Euro Sphere</b><small>French Learning
+            Academy</small></span></div>
+      <div class="art-copy"><span class="eyebrow">BONJOUR · BIENVENUE</span>
+        <h1>Learn French.<br><em>Open your world.</em></h1>
+        <p>Learn at your pace, speak with confidence, and build your future in French.</p>
+        <div class="art-pills"><span>🇫🇷 A1–C1</span><span>Speaking practice</span><span>Live classes</span></div>
+      </div>
+      <div class="art-foot">APPRENDRE · PRATIQUER · RÉUSSIR</div>
+    </section>
+    <section class="auth-side">
+      <div class="auth-wrap">
+        <div class="brand brand-dark"><img
+  src="assets/euro-sphere-logo.jpg"
+  alt="Euro Sphere Logo"
+  style="width:54px;height:54px;object-fit:contain;flex-shrink:0;"
+><span><b>Euro Sphere</b><small>French Learning
+              Academy</small></span></div>
+        <div class="auth-heading">
+          <h2 id="auth-title">Welcome back</h2>
+          <p id="auth-subtitle">Log in to continue your learning journey.</p>
+        </div>
+        <div class="auth-tabs"><button class="auth-tab active" id="show-login" type="button">Log In</button><button
+            class="auth-tab" id="show-signup" type="button">Create Account</button></div>
+        <form id="login-form" class="auth-form"><label>Email address<input id="login-email" type="email"
+              autocomplete="email" placeholder="you@example.com" required></label><label>Password<input
+              id="login-password" type="password" autocomplete="current-password" placeholder="Enter your password"
+              required></label><button class="text-button" type="button" id="forgot-password">Forgot
+            password?</button><button class="primary-button full" type="submit">Log In <span>→</span></button></form>
+       
+<form id="reset-password-form" class="auth-form hidden">
+  <label>New Password
+    <input id="reset-new-password" type="password"
+      autocomplete="new-password"
+      placeholder="Enter new password"
+      minlength="8" required>
+  </label>
+
+  <label>Confirm New Password
+    <input id="reset-confirm-password" type="password"
+      autocomplete="new-password"
+      placeholder="Confirm new password"
+      minlength="8" required>
+  </label>
+
+  <button class="primary-button full" type="submit">
+    Update Password <span>→</span>
+  </button>
+</form>
+
+            <form id="signup-form" class="auth-form hidden"><label>Full name<input id="signup-name" type="text"
+              autocomplete="name" placeholder="Your name" required minlength="2"></label><label>Gmail / Email
+           <label>Gmail / Email address
+  <input id="signup-email" type="email"
+    autocomplete="email" placeholder="you@gmail.com" required>
+</label>
+
+<label>Mobile Number
+  <input id="signup-phone" type="tel"
+    autocomplete="tel" placeholder="Enter mobile number"
+    required pattern="[0-9]{10}" maxlength="10"
+    title="Please enter a valid 10-digit mobile number">
+</label><label>Create password<input id="signup-password" type="password"
+              autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required></label>
+          <p class="fine-print">Your account will be created without automatic access to A1–C1 courses.</p><button
+            class="primary-button full" type="submit">Create Account <span>→</span></button>
+        </form>
+        <p class="auth-note">By continuing, you agree to use the academy responsibly.</p>
+        <p id="auth-status" class="status-line"></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-shell" class="app-shell hidden">
+   <aside class="sidebar">
+  <a href="#home" class="brand brand-light sidebar-brand">
+    <img
+      src="assets/euro-sphere-logo.jpg"
+      alt="Euro Sphere Logo"
+     style="width:54px;height:54px;object-fit:contain;flex-shrink:0;border-radius:50%;"
+    >
+    <span>
+      <b>Euro Sphere</b>
+      <small>French Learning</small>
+    </span>
+  </a>
+      <div class="side-label">LEARNING SPACE</div><button class="side-link active" data-page="home"><span>⌂</span>
+        Home</button><button class="side-link" data-page="courses"><span>▦</span> My Courses</button><button
+        class="side-link" data-page="voice"><span>♬</span> Voice Practice</button><button class="side-link" data-page="quizzes">
+  <span>📝</span> Quizzes
+</button><button class="side-link"
+        data-page="score"><span>◔</span> Score & Progress</button><button class="side-link"
+        data-page="profile"><span>◎</span> Profile</button><button class="side-link admin-link hidden"
+        data-page="admin"><span>⚙</span> Admin Panel</button>
+      <div class="sidebar-bottom">
+        <div class="help-card"><b>Keep going!</b>
+          <p>Small practice every day makes a difference.</p>
+        </div><button id="logout-button" class="side-link logout"><span>↪</span> Log Out</button>
+      </div>
+    </aside>
+    <div class="main-column">
+   <header class="topbar">
+  <button id="mobile-menu" class="icon-button" aria-label="Open navigation">☰</button>
+
+  <div class="breadcrumb">
+    <img
+      src="assets/euro-sphere-logo.jpg"
+      alt="Euro Sphere"
+      style="width:40px;height:40px;object-fit:contain;vertical-align:middle;margin-right:8px;"
+    >
+    <span>/</span>
+    <b id="page-title">Home</b>
+  </div>
+
+  <div class="top-user">
+    <span class="online-dot"></span>
+    <span id="top-user-name">Student</span>
+    <div class="avatar" id="top-avatar">S</div>
+  </div>
+</header>
+
+<section id="page-home" class="page active">
+
+  <!-- WELCOME BANNER -->
+  <div class="welcome-banner">
+    <div class="welcome-content">
+      <span class="eyebrow">BIENVENUE À EURO SPHERE</span>
+      <h1 id="welcome-title">Bonjour!</h1>
+      <p>Your French learning journey starts here.</p>
+      <div class="banner-tags">
+        <span>✦ Personal Dashboard</span>
+        <span>✓ Assigned Courses</span>
+      </div>
+    </div>
+    <div class="banner-illustration" aria-hidden="true">
+      <span class="banner-fr">FR</span>
+      <span class="banner-bonjour">Bonjour!</span>
+    </div>
+  </div>
+
+<!-- HOME PAGE DEMO VIDEO -->
+<div class="section-heading section-gap">
+  <div>
+    <span class="eyebrow">START LEARNING</span>
+    <h2>🎬 French Demo Class</h2>
+    <p>Watch a short introduction to French learning.</p>
+  </div>
+</div>
+
+<div class="home-demo-video">
+  <div class="demo-video-frame">
+    <iframe
+      src="https://www.youtube.com/embed/FDTeA4kpnNA"
+      title="Euro Sphere French Demo Class"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+  <div class="demo-video-caption">
+    <strong>Welcome to Euro Sphere French Language Academy</strong>
+    <p>Start your French learning journey with us!</p>
+  </div>
+</div>
+
+  
+  <!-- COURSE PROGRESS -->
+  <div class="section-heading section-gap">
+    <div>
+      <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+      <h2>Course Progress</h2>
+    </div>
+    <button class="inline-link" data-page="courses">View All →</button>
+  </div>
+
+  <div id="home-course-progress" class="course-progress-grid">
+    <p>Loading your progress...</p>
+  </div>
+
+  <!-- COURSE LIBRARY -->
+  <div class="section-heading section-gap">
+    <div>
+      <span class="eyebrow">YOUR CLASSROOM</span>
+      <h2>Explore Your Courses</h2>
+    </div>
+    <button class="inline-link" data-page="courses">View All →</button>
+  </div>
+
+  <div id="home-course-grid" class="course-grid"></div>
+
+  <!-- TOP PERFORMER -->
+  <div class="section-heading section-gap">
+    <div>
+      <span class="eyebrow">STUDENT SPOTLIGHT</span>
+      <h2>🏆 Top Performer</h2>
+    </div>
+  </div>
+
+  <div id="home-top-performer" class="data-row">
+    <p>Loading top performer...</p>
+  </div>
+
+  
+
+  <!-- QUICK PRACTICE -->
+  <div class="section-heading section-gap">
+    <div>
+      <span class="eyebrow">KEEP LEARNING</span>
+      <h2>Quick Practice</h2>
+    </div>
+  </div>
+
+  <div class="quick-grid">
+    <button class="quick-card" data-page="voice">
+      <span class="quick-icon blue">♬</span>
+      <b>Voice Practice</b>
+      <small>Speak French confidently</small>
+    </button>
+
+   <button class="quick-card" data-page="quizzes">
+  <span class="quick-icon green">✎</span>
+  <b>Quizzes</b>
+  <small>Test your French knowledge</small>
+</button>
+
+    <button class="quick-card" data-page="courses">
+      <span class="quick-icon orange">▣</span>
+      <b>Course Library</b>
+      <small>Lessons & live classes</small>
+    </button>
+  </div>
+
+</section>
+
+      <section id="page-courses" class="page">
+        <div class="page-intro"><span class="eyebrow">YOUR LEARNING PATH</span>
+          <h1>My Courses</h1>
+          <p>Each level contains Daily Video, Recorded Courses, Live Classes, Tests, Vocabulary, Grammar and
+            Conversation Practice.</p>
+        </div>
+        <div id="course-grid" class="course-grid course-grid-list"></div>
+      </section>
+      <section id="page-quizzes" class="page">
+  <div class="page-intro">
+    <span class="eyebrow">TEST YOUR FRENCH</span>
+    <h1>Quizzes</h1>
+    <p>Choose an available quiz, test your knowledge and track your progress.</p>
+  </div>
+
+  <div id="student-quiz-list" class="course-grid course-grid-list">
+    <p>Loading quizzes...</p>
+  </div>
+
+  <div id="student-quiz-area" class="hidden"></div>
+</section>
+      <section id="page-course-detail" class="page"><button class="back-link" id="back-courses">← All courses</button>
+        <div id="course-detail-content"></div>
+      </section>
+      <section id="page-content-detail" class="page"><button class="back-link" id="back-course-detail">← Back to
+          course</button>
+        <div id="content-detail-content"></div>
+      </section>
+      <section id="page-voice" class="page">
+        <div class="page-intro"><span class="eyebrow">SPEAK WITH CONFIDENCE</span>
+          <h1>Voice Practice</h1>
+          <p>Speak in Hindi, see the meaning in English and French, and learn a useful response.</p>
+        </div>
+        <div class="voice-layout">
+          <article class="voice-card">
+            <div class="mic-orbit">
+              <div class="mic-core">🎙</div>
+            </div>
+            <h2>Say it in Hindi</h2>
+            <p>Tap the microphone and speak a sentence. Your browser may ask permission to use the microphone.</p>
+            <button id="voice-start" class="primary-button">🎙 Start speaking</button><button id="voice-stop"
+              class="secondary-button hidden">Stop listening</button>
+            <p id="voice-support" class="fine-print">Voice recognition availability depends on your browser and language
+              support.</p>
+          </article>
+          <article class="translation-card"><span class="eyebrow">YOUR PRACTICE RESULT</span>
+            <div class="translation-block"><small>You said · Hindi</small>
+              <p id="voice-hindi">Your spoken sentence will appear here.</p>
+            </div>
+            <div class="translation-block"><small>English meaning</small>
+              <p id="voice-english">English meaning will appear here.</p>
+            </div>
+            <div class="translation-block"><small>French version</small>
+              <p id="voice-french">La phrase française apparaîtra ici.</p><button class="sound-button"
+                id="speak-french">🔊 Listen</button>
+            </div>
+            <div class="translation-block suggested"><small>Suggested reply</small>
+              <p id="voice-reply">A suitable reply will appear here.</p>
+            </div>
+            <p class="fine-print">This first version uses a small phrasebook for common phrases; it does not provide
+              unrestricted AI translation.</p>
+          </article>
+        </div>
+      </section>
+      <section id="page-score" class="page">
+        <div class="page-intro"><span class="eyebrow">YOUR ACHIEVEMENTS</span>
+          <h1>Score & Progress</h1>
+          <p>Track your learning progress and completed assessments.</p>
+        </div>
+        <div class="score-overview">
+          <div class="score-ring">
+            <div><strong id="score-total">0</strong><small>POINTS</small></div>
+          </div>
+          <div>
+            <h2>Every lesson counts.</h2>
+            <p>Complete course lessons and tests to build your progress.</p>
+            <div class="progress-track"><span id="score-progress-bar"></span></div><small id="score-progress-label">No
+              test scores yet</small>
+          </div>
+        </div>
+        <div class="section-heading">
+          <div>
+            <h2>Test history</h2>
+            <p>Your recent quiz results</p>
+          </div>
+        </div>
+        <div id="test-history" class="data-list">
+          <div class="empty-state">No test results yet.</div>
+        </div>
+        <div class="section-heading section-gap">
+          <div>
+            <h2>Learning achievements</h2>
+          </div>
+        </div>
+        <div class="achievement-grid">
+          <article class="achievement"><span>🌱</span><b>First steps</b><small>Start your first lesson</small></article>
+          <article class="achievement"><span>🔥</span><b>Daily learner</b><small>Practice consistently</small></article>
+          <article class="achievement"><span>🏆</span><b>Test champion</b><small>Complete a course test</small>
+          </article>
+        </div>
+      </section>
+     
+<section id="page-profile" class="page">
+  <div class="page-intro">
+    <span class="eyebrow">YOUR ACCOUNT</span>
+    <h1>My Profile</h1>
+    <p>Manage your account, course access and learning history.</p>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-avatar" id="profile-avatar">S</div>
+    <div class="profile-main">
+      <h2 id="profile-name">Student</h2>
+      <p id="profile-email">student@example.com</p>
+      <span class="status-pill" id="profile-role">Student account</span>
+    </div>
+  </div>
+
+  <!-- SUMMARY CARDS -->
+  <div class="section-heading section-gap">
+    <div>
+      <span class="eyebrow">YOUR OVERVIEW</span>
+      <h2>Learning at a glance</h2>
+    </div>
+  </div>
+
+  <div class="stat-grid home-summary-grid">
+   <article class="stat-card">
+  <span class="stat-icon blue">◉</span>
+  <div>
+    <small>Total Learning XP</small>
+    <strong id="profile-score">0</strong>
+    <small>Earned from all learning activities</small>
+  </div>
+</article>
+
+    <article class="stat-card">
+      <span class="stat-icon purple">▤</span>
+      <div>
+        <small>Courses Unlocked</small>
+        <strong id="profile-courses">0 / 5</strong>
+        <small>Assigned by your admin</small>
+      </div>
+    </article>
+
+    <article class="stat-card">
+      <span class="stat-icon green">✓</span>
+      <div>
+        <small>Lessons Completed</small>
+        <strong id="profile-lessons">0</strong>
+        <small>Your learning progress</small>
+      </div>
+    </article>
+  </div>
+
+  <form id="profile-form" class="panel-form">
+    <label>
+      Full name
+      <input id="profile-name-input" required minlength="2">
+    </label>
+    <button class="primary-button" type="submit">Save profile</button>
+  </form>
+
+  <div class="section-heading section-gap">
+    <div>
+      <h2>My Course Access</h2>
+      <p>Courses are unlocked by the academy admin.</p>
+    </div>
+  </div>
+
+  <div id="profile-access-list" class="data-list"></div>
+
+  <!-- PERSONAL QUIZ HISTORY -->
+  <div class="quiz-history-card section-gap">
+    <div class="quiz-history-header">
+      <div>
+        <span class="eyebrow">YOUR ACHIEVEMENTS</span>
+        <h2>My Quiz History</h2>
+        <p>Your complete quiz attempt history.</p>
+      </div>
+      <span class="quiz-history-icon">📊</span>
+    </div>
+
+    <div id="quiz-performance-history">
+      <p class="quiz-history-empty">Your quiz history will appear here.</p>
+    </div>
+  </div>
+</section>
+
+      <section id="page-admin" class="page">
+        <div class="page-intro"><span class="eyebrow">ACADEMY MANAGEMENT</span>
+          <h1>Admin Panel</h1>
+          <p>Manage students, course access, lesson content and live class schedules.</p>
+        </div>
+        <div class="admin-overview" id="admin-overview">
+  <div class="admin-stat-card">
+    <span>Total Students</span>
+    <strong id="admin-total-students">0</strong>
+  </div>
+
+  <div class="admin-stat-card">
+    <span>Course Access</span>
+    <strong id="admin-total-access">0</strong>
+  </div>
+
+  <div class="admin-stat-card">
+    <span>Quiz Attempts</span>
+    <strong id="admin-total-quiz-attempts">0</strong>
+  </div>
+
+  <div class="admin-stat-card">
+    <span>Active in Last 30 Days</span>
+    <strong id="admin-active-students">0</strong>
+  </div>
+</div>
+<!-- SPEAKING PERFORMANCE DASHBOARD -->
+<div class="admin-speaking-card" id="admin-speaking-card">
+  <div class="admin-section-heading">
+    <div>
+      <span class="eyebrow">STUDENT PERFORMANCE</span>
+      <h2>🎤 Speaking Performance</h2>
+    </div>
+  </div>
+
+  <div id="admin-speaking-performance">
+    <p>Speaking performance will appear here.</p>
+  </div>
+</div>
+<!-- STUDENT-WISE XP REPORT -->
+<div class="admin-speaking-card" id="admin-xp-card">
+  <div class="admin-section-heading">
+    <div>
+      <span class="eyebrow">LEARNING ACHIEVEMENTS</span>
+      <h2>🏆 Student-wise XP Report</h2>
+      <p>View learning points earned by every student.</p>
+    </div>
+  </div>
+
+  <div id="admin-xp-report">
+    <p>Loading student XP report...</p>
+  </div>
+</div>
+<div class="admin-tabs">
+  <button class="admin-tab active" data-admin-tab="students">
+    Dashboard
+  </button>
+  <button class="admin-tab" data-admin-tab="A1">A1 Course</button>
+  <button class="admin-tab" data-admin-tab="A2">A2 Course</button>
+  <button class="admin-tab" data-admin-tab="B1">B1 Course</button>
+  <button class="admin-tab" data-admin-tab="B2">B2 Course</button>
+  <button class="admin-tab" data-admin-tab="C1">C1 Course</button>
+</div>
+       <div id="admin-students" class="admin-panel">
+  <div class="section-heading">
+    <div>
+      <h2>👨‍🎓 All Students</h2>
+<p>Search and manage all students across A1 to C1 courses.</p>
+    </div>
+    <button class="secondary-button" id="refresh-students">Refresh</button>
+  </div>
+
+  <div id="admin-student-list" class="student-list">
+    <div class="empty-state">Loading students…</div>
+  </div>
+
+  <div id="admin-student-activity" class="form-card hidden">
+    <div class="section-heading">
+      <div>
+        <h2 id="activity-student-title">Student Activity History</h2>
+        <p>Recent recorded activity for this student.</p>
+      </div>
+      <button type="button" class="secondary-button" id="close-student-activity">
+        Close
+      </button>
+    </div>
+    <div id="admin-student-activity-list">
+      <div class="empty-state">Select a student to view activity.</div>
+    </div>
+  </div>
+</div>
+
+<div id="admin-A1" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>👨‍🎓 A1 Course Students</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div id="admin-student-list-A1" class="student-list"></div>
+    </div>
+  </details>
+
+  <div class="course-management-area" id="course-management-A1"></div>
+
+</div>
+
+<div id="admin-A2" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>👨‍🎓 A2 Course Students</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div id="admin-student-list-A2" class="student-list"></div>
+    </div>
+  </details>
+
+  <div class="course-management-area" id="course-management-A2"></div>
+
+</div>
+
+<div id="admin-B1" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>👨‍🎓 B1 Course Students</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div id="admin-student-list-B1" class="student-list"></div>
+    </div>
+  </details>
+
+  <div class="course-management-area" id="course-management-B1"></div>
+
+</div>
+
+<div id="admin-B2" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>👨‍🎓 B2 Course Students</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div id="admin-student-list-B2" class="student-list"></div>
+    </div>
+  </details>
+
+  <div class="course-management-area" id="course-management-B2"></div>
+
+</div>
+
+
+<div id="admin-C1" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>👨‍🎓 C1 Course Students</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div id="admin-student-list-C1" class="student-list"></div>
+    </div>
+  </details>
+
+  <div class="course-management-area" id="course-management-C1"></div>
+
+</div>
+      <div id="admin-content" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>📚 Add Course Content</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div class="form-card">
+        <h2>Add course content</h2>
+           <form id="content-form" class="admin-form-grid">
+
+  <label>Course level
+    <select id="content-level">
+      <option>A1</option>
+      <option>A2</option>
+      <option>B1</option>
+      <option>B2</option>
+      <option>C1</option>
+    </select>
+  </label>
+
+  <label>Content type
+    <select id="content-type">
+      <option value="daily">Daily Video</option>
+      <option value="recorded">Recorded Courses</option>
+      <option value="test">Test / Quiz</option>
+      <option value="vocabulary">Vocabulary</option>
+      <option value="grammar">Grammar</option>
+      <option value="conversation">Conversation Practice</option>
+    </select>
+  </label>
+
+  <label class="span-2">Lesson title
+    <input id="content-title" required placeholder="e.g. Bonjour — Greetings">
+  </label>
+
+  <label class="span-2">Video / resource URL
+    <input id="content-url" type="url" placeholder="https://…">
+  </label>
+
+  <label class="span-2">Thumbnail image URL
+    <input id="content-thumbnail" type="url" placeholder="https://…">
+  </label>
+
+  <label class="span-2">Description
+    <textarea id="content-description" rows="2" placeholder="Lesson summary"></textarea>
+  </label>
+  <label class="span-2">Reward Points (XP)
+  <input
+    id="content-xp"
+    type="number"
+    min="0"
+    max="1000"
+    value="10"
+    required
+    placeholder="Enter reward points">
+  <small>Students will earn these points after completing the activity.</small>
+</label>
+
+  <label class="span-2">Publish status
+    <select id="content-published">
+      <option value="true">Published</option>
+      <option value="false">Draft (not visible to students)</option>
+    </select>
+  </label>
+
+  <button class="primary-button span-2" type="submit">Add lesson</button>
+
+</form>
+          </div>
+         
+<div id="edit-content-card" class="form-card hidden">
+  <h2>Edit lesson</h2>
+
+  <form id="edit-content-form" class="admin-form-grid">
+    <input type="hidden" id="edit-content-id">
+
+    <label>
+      Course level
+      <select id="edit-content-level" required>
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+      </select>
+    </label>
+
+    <label>
+      Content type
+      <select id="edit-content-type" required>
+        <option value="daily">Daily Video</option>
+        <option value="recorded">Recorded Courses</option>
+        <option value="test">Test / Quiz</option>
+        <option value="vocabulary">Vocabulary</option>
+        <option value="grammar">Grammar</option>
+        <option value="conversation">Conversation Practice</option>
+      </select>
+    </label>
+
+    <label class="span-2">
+      Lesson title
+      <input id="edit-content-title" required
+        placeholder="Lesson title">
+    </label>
+
+    <label class="span-2">
+      Video / resource URL
+      <input id="edit-content-url" type="url"
+        placeholder="https://…">
+    </label>
+
+    <label class="span-2">
+      Description
+      <textarea id="edit-content-description" rows="3"
+        placeholder="Lesson summary"></textarea>
+    </label>
+    <label class="span-2">
+  Reward Points (XP)
+  <input
+    id="edit-content-xp"
+    type="number"
+    min="0"
+    max="1000"
+    value="10"
+    required
+    placeholder="Enter reward points">
+</label>
+
+    <label class="span-2">
+      Thumbnail image URL
+      <input id="edit-content-thumbnail" type="url" placeholder="https://…">
+    </label>
+
+    <label class="span-2">
+      Publish status
+      <select id="edit-content-published">
+        <option value="true">Published</option>
+        <option value="false">Draft (not visible to students)</option>
+      </select>
+    </label>
+
+    <button class="primary-button span-2" type="submit">
+      Save Changes
+    </button>
+
+    <button class="secondary-button span-2" type="button"
+      id="cancel-edit-content">
+      Cancel
+    </button>
+  </form>
+</div>
+
+<div id="admin-content-list" class="data-list"></div>
+    </div>
+  </details>
+</div>
+
+<div id="admin-classes" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>📅 Schedule a Live Class</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div class="form-card">
+        <h2>Schedule a live class</h2>
+            <form id="class-form" class="admin-form-grid"><label>Course level<select id="class-level">
+                  <option>A1</option>
+                  <option>A2</option>
+                  <option>B1</option>
+                  <option>B2</option>
+                  <option>C1</option>
+                </select></label><label>Class title<input id="class-title" required
+                  placeholder="French conversation"></label><label>Date and time<input id="class-time"
+                  type="datetime-local" required></label><label>Teacher<input id="class-teacher"
+                  placeholder="Teacher name"></label><label class="span-2">Meeting URL<input id="class-url" type="url"
+                  placeholder="https://meet.google.com/…"></label><button class="primary-button span-2"
+                type="submit">Schedule class</button></form>
+          </div>
+          <div class="form-card hidden" id="edit-class-card">
+  <h2>Edit Live Class</h2>
+
+  <form id="edit-class-form" class="admin-form-grid">
+    <input type="hidden" id="edit-class-id">
+
+    <label>Course level
+      <select id="edit-class-level">
+        <option>A1</option>
+        <option>A2</option>
+        <option>B1</option>
+        <option>B2</option>
+        <option>C1</option>
+      </select>
+    </label>
+
+    <label>Class title
+      <input id="edit-class-title" required>
+    </label>
+
+    <label>Date and time
+      <input id="edit-class-time" type="datetime-local" required>
+    </label>
+
+    <label>Teacher
+      <input id="edit-class-teacher">
+    </label>
+
+    <label class="span-2">Meeting URL
+      <input id="edit-class-url" type="url">
+    </label>
+
+    <button class="primary-button span-2" type="submit">
+      Save Changes
+    </button>
+
+    <button class="secondary-button span-2" type="button" id="cancel-edit-class">
+      Cancel
+    </button>
+  </form>
+</div>
+          <div id="admin-class-list" class="data-list"></div>
+           </div>
+  </details>
+</div>
+
+<div id="admin-sentences" class="admin-panel hidden">
+  <details class="admin-accordion">
+    <summary>
+      <span>🌍 Add Daily Practice Sentence</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+    <div class="accordion-content">
+      <div class="form-card">
+        <h2>🌍 Add Daily Practice Sentence</h2>
+
+    <form id="sentence-form" class="admin-form-grid">
+      <label>
+        Course Level
+        <select id="sentence-level" required>
+          <option value="A1">A1</option>
+          <option value="A2">A2</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+          <option value="C1">C1</option>
+        </select>
+      </label>
+
+      <label>
+        Sentence Title
+        <input id="sentence-title" required
+          placeholder="Daily Conversation 1">
+      </label>
+
+      <label class="span-2">
+        Hindi Sentence
+        <textarea id="sentence-hindi" required
+          placeholder="नमस्ते, आप कैसे हैं?"></textarea>
+      </label>
+
+      <label class="span-2">
+        English Sentence
+        <textarea id="sentence-english" required
+          placeholder="Hello, how are you?"></textarea>
+      </label>
+
+      <label class="span-2">
+        French Sentence
+        <textarea id="sentence-french" required
+          placeholder="Bonjour, comment allez-vous ?"></textarea>
+      </label>
+
+      <label>
+        Publish Status
+        <select id="sentence-published">
+          <option value="true">Published</option>
+          <option value="false">Draft</option>
+        </select>
+      </label>
+<label>
+  Reward Points (XP)
+  <input
+    id="sentence-xp"
+    type="number"
+    min="0"
+    max="1000"
+    value="10"
+    required
+    placeholder="Enter reward points">
+</label>
+      <button class="primary-button span-2" type="submit">
+        Add Sentence
+      </button>
+    </form>
+    <!-- EDIT DAILY SENTENCE FORM -->
+<div class="form-card hidden" id="edit-sentence-card">
+  <h2>✏️ Edit Daily Sentence</h2>
+
+  <form id="edit-sentence-form" class="admin-form-grid">
+
+    <input type="hidden" id="edit-sentence-id">
+
+    <label>
+      Course Level
+      <select id="edit-sentence-level" required>
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+      </select>
+    </label>
+
+    <label>
+      Sentence Title
+      <input id="edit-sentence-title" required>
+    </label>
+
+    <label class="span-2">
+      Hindi Sentence
+      <textarea id="edit-sentence-hindi" required></textarea>
+    </label>
+
+    <label class="span-2">
+      English Sentence
+      <textarea id="edit-sentence-english" required></textarea>
+    </label>
+
+    <label class="span-2">
+      French Sentence
+      <textarea id="edit-sentence-french" required></textarea>
+    </label>
+
+    <label>
+      Publish Status
+      <select id="edit-sentence-published">
+        <option value="true">Published</option>
+        <option value="false">Draft</option>
+      </select>
+    </label>
+<label>
+  Reward Points (XP)
+  <input
+    id="edit-sentence-xp"
+    type="number"
+    min="0"
+    max="1000"
+    value="10"
+    required
+    placeholder="Enter reward points">
+</label>
+    <button class="primary-button span-2" type="submit">
+      Save Changes
+    </button>
+
+    <button class="secondary-button span-2" type="button"
+      id="cancel-edit-sentence">
+      Cancel
+    </button>
+
+  </form>
+</div>
+  </div>
+
+  <div class="form-card">
+    <h2>📚 Added Daily Sentences</h2>
+    <div id="admin-sentence-list" class="data-list">
+      <div class="empty-state">Loading sentences...</div>
+      </div>
+    </div>
+  </details>
+</div>
+        <div id="admin-quizzes" class="admin-panel hidden">
+
+  <details class="admin-accordion">
+    <summary>
+      <span>📝 Quiz Management</span>
+      <span class="accordion-arrow">＋</span>
+    </summary>
+
+    <div class="accordion-content">
+      <div class="form-card">
+        <h2>Quiz Management</h2>
+    <p>Create and manage French quizzes for A1 to C1 students.</p>
+    <form id="quiz-form" class="admin-form-grid">
+
+  <label>
+    Course Level
+    <select id="quiz-level" required>
+      <option value="A1">A1 - Beginner</option>
+      <option value="A2">A2 - Elementary</option>
+      <option value="B1">B1 - Intermediate</option>
+      <option value="B2">B2 - Upper Intermediate</option>
+      <option value="C1">C1 - Advanced</option>
+    </select>
+  </label>
+
+  <label>
+    Quiz Title
+    <input
+      type="text"
+      id="quiz-title"
+      placeholder="e.g. French A1 Grammar Test"
+      required
+    >
+  </label>
+
+  <label class="span-2">
+    Quiz Description
+    <textarea
+      id="quiz-description"
+      rows="3"
+      placeholder="Write a short description of this quiz"
+    ></textarea>
+  </label>
+
+  <button type="submit" class="primary-button span-2">
+    Create Quiz
+  </button>
+
+</form>
+    <div id="admin-quiz-list">
+      <div class="empty-state">Quiz management is ready.</div>
+    </div>
+  </div>
+</div>
+<div id="quiz-question-editor" class="form-card hidden">
+  <div class="section-heading">
+    <div>
+      <h2 id="quiz-editor-title">Add Quiz Questions</h2>
+      <p>Add multiple-choice questions and select the correct answer.</p>
+    </div>
+
+    <button
+      type="button"
+      class="secondary-button"
+      id="close-quiz-editor"
+    >
+      Close
+    </button>
+  </div>
+
+  <input type="hidden" id="editing-quiz-id">
+
+  <div id="quiz-question-list"></div>
+  <form id="quiz-question-form" class="admin-form-grid">
+
+  <label class="span-2">
+    Question
+    <textarea
+      id="quiz-question-text"
+      rows="3"
+      placeholder="e.g. What is the French word for Hello?"
+      required
+    ></textarea>
+  </label>
+
+  <label>
+    Option A
+    <input id="quiz-option-a" required placeholder="Bonjour">
+  </label>
+
+  <label>
+    Option B
+    <input id="quiz-option-b" required placeholder="Merci">
+  </label>
+
+  <label>
+    Option C
+    <input id="quiz-option-c" required placeholder="Au revoir">
+  </label>
+
+  <label>
+    Option D
+    <input id="quiz-option-d" required placeholder="Bonsoir">
+  </label>
+
+  <label class="span-2">
+    Correct Answer
+    <select id="quiz-correct-option" required>
+      <option value="A">Option A</option>
+      <option value="B">Option B</option>
+      <option value="C">Option C</option>
+      <option value="D">Option D</option>
+    </select>
+  </label>
+
+  <label>
+    Points
+    <input
+      id="quiz-question-points"
+      type="number"
+      min="1"
+      value="1"
+      required
+    >
+  </label>
+
+  <button type="submit" class="primary-button span-2">
+    Add Question
+  </button>
+
+</form>
+      </div>
+    </div>
+  </details>
+</div>
+
+      </section>
+      <footer class="app-footer"><span>© <span id="year"></span> Euro Sphere</span><span>Apprendre · Pratiquer ·
+          Réussir</span></footer>
+    </div>
+    <nav class="mobile-nav">
+      <button class="mobile-nav-link active" data-page="home"><span>⌂</span>Home</button>
+      <button class="mobile-nav-link" data-page="voice"><span>♬</span>Voice</button>
+      <button class="mobile-nav-link" data-page="quizzes">
+  <span>✎</span>Quizzes
+</button>
+      <button class="mobile-nav-link" data-page="courses"><span>▦</span>Courses</button>
+      <button class="mobile-nav-link" data-page="profile"><span>◎</span>Profile</button>
+    </nav>
+  </div>
+</body>
+
+</html>
